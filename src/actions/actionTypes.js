@@ -1,1 +1,3 @@
 export const INPUT_CHANGE = 'INPUT_CHANGE'
+export const SPEED_CHANGE = 'SPEED_CHANGE'
+export const SET_START_TIME = 'SET_START_TIME' 

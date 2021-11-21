@@ -9,7 +9,7 @@ import ChangeInfo from './components/ChangeInfo';
 
 const App = () => {
 
-  const {value, currentSymbol, text, danger, count} = useSelector(state => state.inputReducer)
+  const {value, currentSymbol, text, danger, count, currentTime, startTime} = useSelector(state => state.inputReducer)
 
 
   let percent
@@ -22,6 +22,10 @@ const App = () => {
     percent = Math.floor(currentSymbol / count * 100)
   }
 
+  const minutes = currentTime / 60000 - startTime / 60000
+
+  const speed = Math.floor(count/minutes)
+
   return (
     <Container className="p-5 mb-4 bg-light rounded-3">
       <TextElement 
@@ -29,9 +33,9 @@ const App = () => {
         text={text}
         danger={danger}
       />
-      <ChangeInfo percent={percent}/>
+      <ChangeInfo percent={percent} speed={isNaN(speed) || !isFinite(speed) ?  0 : speed}/>
       <InputText 
-        value={value}
+        value={value} 
       />
     </Container>
   )
