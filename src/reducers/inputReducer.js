@@ -1,10 +1,10 @@
-import { INPUT_CHANGE, SPEED_CHANGE, SET_START_TIME } from '../actions/actionTypes'
+import { INPUT_CHANGE, SPEED_CHANGE, SET_START_TIME, RESET_DATA } from '../actions/actionTypes'
 
 const initialState = {
     value: '',
     currentSymbol: 0,
     danger: false,
-    text: `Бандлинг - это хорошо, но по мере роста вашего приложения, ваш бандл тоже будет расти. Особенно если вы подключаете крупные сторонние библиотеки. Вам нужно следить за кодом, который вы подключаете, чтобы случайно не сделать приложение настолько большим, что его загрузка займёт слишком много времени.`,
+    text: `Бандлинг - это хорошо`,
     count: 0,
     startTime: 0,
     currentTime: 0,
@@ -46,6 +46,9 @@ const inputReducer = (state = initialState, action) => {
                 ...state,
                 startTime
             }
+        }
+        case RESET_DATA: {
+            return initialState
         }
         default:
             return state

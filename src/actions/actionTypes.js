@@ -1,3 +1,5 @@
 export const INPUT_CHANGE = 'INPUT_CHANGE'
 export const SPEED_CHANGE = 'SPEED_CHANGE'
 export const SET_START_TIME = 'SET_START_TIME' 
+export const SET_ACTIVE_MODAL = 'SET_ACTIVE_MODAL'
+export const RESET_DATA = 'RESET_DATA'

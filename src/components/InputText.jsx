@@ -1,28 +1,41 @@
 import React, { useState } from 'react'
 import { inputChange, setStartTime, speedChange } from '../actions/actionCreators';
 import { useRef, useEffect } from 'react';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-function InputText({ value }) {
+function InputText({ value, startTime }) {
 
   const inputEl = useRef(null);
   const dispatch = useDispatch()
 
   const [startTimer, setStartTimer] = useState(false)
 
+  const {active} = useSelector(state => state.modalReducer)
+
   const handleBlur = () => {
     inputEl.current.focus();
   }
   const handleChange = (e) => {
+
+    if(active) {
+      //console.log(startTimer)
+      // if(startTimer) {
+      //   setStartTimer(start => clearInterval(start))
+      // }
+      return null
+    }
+
     const value = e.currentTarget.value
     dispatch(inputChange(value))
 
-    if (!startTimer) {
+    if (!startTime) {
       dispatch(setStartTime(Date.now()))
-      setStartTimer(start => (
-        start = setInterval(() => {
-          dispatch(speedChange(Date.now()))
-        }, 1000)))
+    //   //startTimerHandler()
+    //   setStartTimer(prevValue => !prevValue)
+    //   // setStartTimer(start => (
+    //   //   start = setInterval(() => {
+    //   //     dispatch(speedChange(Date.now()))
+    //   //   }, 1000)))
     }
 
   }
